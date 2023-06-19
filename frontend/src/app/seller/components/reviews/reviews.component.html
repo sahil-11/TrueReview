@@ -1,0 +1,50 @@
+<mat-grid-list cols="5" rowHeight="80vh" class="main">
+  <mat-grid-tile colspan="2"
+    ><mat-card class="card">
+      <mat-card-header class="header">
+        <mat-card-title>{{ shopName }}</mat-card-title>
+      </mat-card-header>
+      <div class="image-container">
+        <img
+          mat-card-image
+          src="../../../../assets/default.jpg"
+          alt="food-image"
+          class="image"
+        />
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <div class="review-container">
+      <div class="reviews" *ngIf="reviewList?.length">
+        <mat-list-item *ngFor="let review of reviewList">
+          <div class="review-content">
+            <div class="circle" [ngStyle]="{ 'background-color': circleColor }">
+              <div class="initials">{{ getInitials(review.userName) }}</div>
+            </div>
+          </div>
+
+          <div class="review-content">
+            <div class="username">{{ review.userName }}</div>
+            <div class="review-text">{{ review.review }}</div>
+          </div>
+        </mat-list-item>
+      </div>
+      <div class="footer-paginator">
+        <mat-paginator
+          #paginator
+          class="demo-paginator"
+          (page)="handlePageEvent($event)"
+          [length]="length"
+          [pageSize]="pageSize"
+          [disabled]="disabled"
+          [showFirstLastButtons]="showFirstLastButtons"
+          [hidePageSize]="hidePageSize"
+          [pageIndex]="pageIndex"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

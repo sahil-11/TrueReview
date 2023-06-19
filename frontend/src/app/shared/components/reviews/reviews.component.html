@@ -1,0 +1,108 @@
+<mat-grid-list cols="5" rowHeight="80vh" class="main">
+  <mat-grid-tile colspan="2"
+    ><mat-card class="card">
+      <mat-card-header class="header">
+        <mat-card-title>{{ shopName }}</mat-card-title>
+      </mat-card-header>
+      <div class="image-container">
+        <img
+          mat-card-image
+          src="../../../../assets/default.jpg"
+          alt="food-image"
+          class="image"
+        />
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <div class="review-container">
+      <div *ngIf="isAuthenticated" class="row justify-content-end">
+        <div class="col-3">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="openModal(mytemplate)"
+          >
+            Add UID
+          </button>
+        </div>
+      </div>
+      <div class="reviews" *ngIf="reviewList?.length; else noreviews">
+        <mat-list-item *ngFor="let review of reviewList; let i = index">
+          <div class="review-content">
+            <div
+              class="circle"
+              [ngStyle]="{
+                'background-color': getInitials(review.userName, i).color
+              }"
+            >
+              <div class="initials">
+                {{ getInitials(review.userName, i).initials }}
+              </div>
+            </div>
+          </div>
+
+          <div class="review-content">
+            <div class="username">{{ review.userName }}</div>
+            <div class="review-text">{{ review.review }}</div>
+          </div>
+        </mat-list-item>
+      </div>
+      <ng-template #noreviews> No reviews yet </ng-template>
+      <div class="footer-paginator">
+        <mat-paginator
+          #paginator
+          class="demo-paginator"
+          (page)="handlePageEvent($event)"
+          [length]="length"
+          [pageSize]="pageSize"
+          [disabled]="disabled"
+          [showFirstLastButtons]="showFirstLastButtons"
+          [hidePageSize]="hidePageSize"
+          [pageIndex]="pageIndex"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #mytemplate>
+  <h1 mat-dialog-title>Hi {{ data.name }}</h1>
+  <div mat-dialog-content>
+    <p>Please enter UID</p>
+    <mat-form-field>
+      <mat-label>UID</mat-label>
+      <input matInput [(ngModel)]="data.uid" />
+    </mat-form-field>
+    <p *ngIf="sessionData != null && sessionData?.role === 'user'">
+      Please write review
+    </p>
+    <mat-form-field *ngIf="sessionData != null && sessionData?.role === 'user'">
+      <mat-label>Review</mat-label>
+      <textarea matInput [(ngModel)]="data.review"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button
+      *ngIf="sessionData != null && sessionData?.role === 'seller'"
+      mat-button
+      [mat-dialog-close]="data.uid"
+      cdkFocusInitial
+      (click)="addUID(data.uid)"
+    >
+      Confirm
+    </button>
+    <button
+      *ngIf="sessionData != null && sessionData?.role === 'user'"
+      mat-button
+      [mat-dialog-close]="data.uid"
+      cdkFocusInitial
+      (click)="addReview(data.uid, data.review)"
+    >
+      Add Review
+    </button>
+  </div>
+</ng-template>
