@@ -1,0 +1,29 @@
+<div
+  class="card"
+  (mouseenter)="onCardHover(true)"
+  (mouseleave)="onCardHover(false)"
+>
+  <img class="card-img" src="../../../../assets/default.jpg" />
+  <div
+    class="card-img-overlay text-white d-flex flex-column justify-content-end align-items-end"
+    [ngClass]="{ 'card-img-overay-hover': isHovered }"
+  >
+    <h2 class="card-title">{{ name }}</h2>
+    <h6 class="card-subtitle mb-1">
+      <span><mat-icon> location_on</mat-icon>{{ location }}</span>
+    </h6>
+    <!-- <h6 class="card-subtitle mb-2">{{ category }}</h6> -->
+    <button
+      class="visit-button"
+      *ngIf="isHovered"
+      routerLink="/shops/{{ _id }}"
+    >
+      Visit Shop
+    </button>
+
+    <div class="link d-flex">
+      <!-- <a href="#" class="card-link text-warning">Read More</a>
+      <a href="#" class="card-link text-warning">Book a Trip</a> -->
+    </div>
+  </div>
+</div>

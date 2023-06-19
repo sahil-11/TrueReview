@@ -1,0 +1,116 @@
+<ng-container>
+  <mat-grid-list cols="1" rowHeight="100vh" style="margin: 0 20% 0 20%">
+    <mat-card>
+      <mat-tab-group animationDuration="1000ms" class="tab-group-class">
+        <mat-tab label="User">
+          <mat-card class="login-card">
+            <!-- <mat-card-header>
+              <mat-card-title>Login</mat-card-title>
+            </mat-card-header> -->
+            <mat-card-content>
+              <form [formGroup]="userloginForm">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    formControlName="email"
+                    placeholder="Enter your email"
+                  />
+                  <mat-error
+                    *ngIf="
+                      userloginForm.controls['email'].invalid &&
+                      userloginForm.controls['email'].touched
+                    "
+                  >
+                    Please enter a valid email.
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    formControlName="password"
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <mat-error
+                    *ngIf="
+                      userloginForm.controls['password'].invalid &&
+                      userloginForm.controls['password'].touched
+                    "
+                  >
+                    Please enter a password.
+                  </mat-error>
+                </mat-form-field>
+
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="userloginForm.invalid"
+                  (click)="userLogin()"
+                >
+                  Login
+                </button>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Seller"
+          ><mat-card class="login-card">
+            <!-- <mat-card-header>
+              <mat-card-title>Login</mat-card-title>
+            </mat-card-header> -->
+            <mat-card-content>
+              <form [formGroup]="sellerloginForm" (ngSubmit)="sellerLogin()">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    formControlName="email"
+                    placeholder="Enter your email"
+                  />
+                  <mat-error
+                    *ngIf="
+                      sellerloginForm.controls['email'].invalid &&
+                      sellerloginForm.controls['email'].touched
+                    "
+                  >
+                    Please enter a valid email.
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    formControlName="password"
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <mat-error
+                    *ngIf="
+                      sellerloginForm.controls['password'].invalid &&
+                      sellerloginForm.controls['password'].touched
+                    "
+                  >
+                    Please enter a password.
+                  </mat-error>
+                </mat-form-field>
+
+                <button
+                  mat-raised-buttons
+                  color="primary"
+                  [disabled]="sellerloginForm.invalid"
+                  (click)="sellerLogin()"
+                >
+                  Login
+                </button>
+              </form>
+            </mat-card-content>
+          </mat-card></mat-tab
+        >
+      </mat-tab-group>
+    </mat-card>
+  </mat-grid-list>
+</ng-container>

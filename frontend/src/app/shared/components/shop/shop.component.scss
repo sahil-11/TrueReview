@@ -1,0 +1,39 @@
+body {
+  padding: 2rem 0rem;
+}
+.card-img-overlay {
+  background-color: rgba(#000, 0.5);
+}
+
+.card-img-overay-hover {
+  background-color: rgba(#000, 0.7);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-img {
+  width: 100%;
+  object-fit: cover;
+  /* Add the following property to control the aspect ratio */
+  aspect-ratio: 16/9;
+}
+
+.visit-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  font-size: 16px;
+  letter-spacing: 2px;
+}

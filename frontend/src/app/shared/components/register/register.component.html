@@ -1,0 +1,321 @@
+<ng-container>
+  <mat-grid-list cols="1" rowHeight="100vh" style="margin: 0 15% 0 15%">
+    <mat-card>
+      <mat-tab-group animationDuration="1000ms" class="tab-group-class">
+        <mat-tab label="User">
+          <mat-card class="login-card">
+            <mat-card-header>
+              <mat-card-title>Create your Account</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <form [formGroup]="userRegisterForm">
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>First name</mat-label>
+                        <input
+                          matInput
+                          formControlName="firstName"
+                          placeholder="First Name"
+                        />
+                        <mat-error
+                          *ngIf="
+                            sellerRegisterForm.controls['firstName'].invalid &&
+                            sellerRegisterForm.controls['firstName'].touched
+                          "
+                        >
+                          First Name is required.
+                        </mat-error>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Last Name</mat-label>
+                        <input
+                          matInput
+                          formControlName="lastName"
+                          placeholder="Enter your email"
+                        />
+                        <mat-error
+                          *ngIf="
+                            sellerRegisterForm.controls['lastName'].invalid &&
+                            sellerRegisterForm.controls['lastName'].touched
+                          "
+                        >
+                          Last Name is required.
+                        </mat-error>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    formControlName="email"
+                    placeholder="Enter your email"
+                  />
+                  <mat-error
+                    *ngIf="
+                      userRegisterForm.controls['email'].invalid &&
+                      userRegisterForm.controls['email'].touched
+                    "
+                  >
+                    Please enter a valid email.
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    formControlName="password"
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <mat-error
+                    *ngIf="
+                      userRegisterForm.controls['password'].invalid &&
+                      userRegisterForm.controls['password'].touched
+                    "
+                  >
+                    Please enter a password.
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm Password</mat-label>
+                  <input
+                    matInput
+                    formControlName="confirmPassword"
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <mat-error
+                    *ngIf="
+                      userRegisterForm.get('confirmPassword')?.touched &&
+                      userRegisterForm.controls['confirmPassword'].errors
+                        ?.['passwordMismatch']
+                    "
+                  >
+                    The password doesn't match!
+                  </mat-error>
+                </mat-form-field>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="userRegisterForm.invalid"
+                  (click)="userRegister()"
+                >
+                  Register
+                </button>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Seller"
+          ><mat-card class="login-card">
+            <mat-card-header>
+              <mat-card-title>Create your Account</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <form [formGroup]="sellerRegisterForm">
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>First name</mat-label>
+                        <input
+                          matInput
+                          formControlName="firstName"
+                          placeholder="First Name"
+                        />
+                        <mat-error
+                          *ngIf="
+                            sellerRegisterForm.controls['firstName'].invalid &&
+                            sellerRegisterForm.controls['firstName'].touched
+                          "
+                        >
+                          First Name is required.
+                        </mat-error>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Last Name</mat-label>
+                        <input
+                          matInput
+                          formControlName="lastName"
+                          placeholder="Enter your email"
+                        />
+                        <mat-error
+                          *ngIf="
+                            sellerRegisterForm.controls['lastName'].invalid &&
+                            sellerRegisterForm.controls['lastName'].touched
+                          "
+                        >
+                          Last Name is required.
+                        </mat-error>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Shop Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="shopName"
+                    placeholder="Enter your Shop Name"
+                  />
+                  <mat-error
+                    *ngIf="
+                      sellerRegisterForm.controls['shopName'].invalid &&
+                      sellerRegisterForm.controls['shopName'].touched
+                    "
+                  >
+                    Please enter a valid Shop Name.
+                  </mat-error>
+                </mat-form-field>
+
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Category</mat-label>
+                        <mat-select
+                          [(ngModel)]="selectedCategory"
+                          formControlName="category"
+                          placeholder="Category"
+                        >
+                          <mat-option
+                            *ngFor="let category of categories"
+                            [value]="category.value"
+                          >
+                            {{ category.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="
+                            sellerRegisterForm.controls['category'].invalid &&
+                            sellerRegisterForm.controls['category'].touched
+                          "
+                        >
+                          Category is required.
+                        </mat-error>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Location</mat-label>
+                        <mat-select
+                          [(ngModel)]="selectedLocation"
+                          formControlName="location"
+                          placeholder="Location"
+                        >
+                          <mat-option
+                            *ngFor="let location of locations"
+                            [value]="location.value"
+                          >
+                            {{ location.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="
+                            sellerRegisterForm.controls['location'].invalid &&
+                            sellerRegisterForm.controls['location'].touched
+                          "
+                        >
+                          Location is required.
+                        </mat-error>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    formControlName="email"
+                    placeholder="Enter your email"
+                  />
+                  <mat-error
+                    *ngIf="
+                      sellerRegisterForm.controls['email'].invalid &&
+                      sellerRegisterForm.controls['email'].touched
+                    "
+                  >
+                    Please enter a valid email.
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    formControlName="password"
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <mat-error
+                    *ngIf="
+                      sellerRegisterForm.controls['password'].invalid &&
+                      sellerRegisterForm.controls['password'].touched
+                    "
+                  >
+                    Please enter a password.
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm Password</mat-label>
+                  <input
+                    matInput
+                    formControlName="confirmPassword"
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <mat-error
+                    *ngIf="
+                      sellerRegisterForm.get('confirmPassword')?.touched &&
+                      sellerRegisterForm.controls['confirmPassword'].errors
+                        ?.['passwordMismatch']
+                    "
+                  >
+                    The password doesn't match!
+                  </mat-error>
+                </mat-form-field>
+
+                <button
+                  mat-raised-buttons
+                  color="primary"
+                  [disabled]="sellerRegisterForm.invalid"
+                  (click)="sellerRegister()"
+                >
+                  Register
+                </button>
+              </form>
+            </mat-card-content>
+          </mat-card></mat-tab
+        >
+      </mat-tab-group>
+    </mat-card>
+  </mat-grid-list>
+</ng-container>

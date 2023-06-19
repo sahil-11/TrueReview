@@ -1,0 +1,83 @@
+// mat-grid-tile {
+//   background: lightblue;
+// }
+
+.main {
+  margin-top: 1%;
+}
+
+.card {
+  max-width: 80%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  flex: 20;
+}
+.header mat-card-title {
+  font-size: larger;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.image-container {
+  flex: 85;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-container {
+  position: relative;
+  height: 100%;
+  min-width: 90%;
+}
+
+.reviews {
+  margin: 1px 2px 1px 2px;
+}
+.footer-paginator {
+  position: absolute;
+  bottom: 0;
+  min-width: 100%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.initials {
+  color: #ffff;
+  font-size: 20px;
+  line-height: 19px;
+  letter-spacing: 0.2625px;
+}
+
+.review-content {
+  display: inline-block;
+  padding: 1rem 0.5rem;
+  vertical-align: middle;
+}
+
+.username {
+  font-weight: normal;
+  font-size: small;
+  font-style: italic;
+}

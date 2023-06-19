@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <span>True Review</span>
+  <span class="example-spacer"></span>
+
+  <button mat-button *ngIf="!isAuthenticated" (click)="navigateToPage('login')">
+    Login
+  </button>
+  <button
+    mat-button
+    *ngIf="!isAuthenticated"
+    (click)="navigateToPage('register')"
+  >
+    Register
+  </button>
+  <mat-card-header *ngIf="isAuthenticated">
+    Welcome, {{ username }}</mat-card-header
+  >
+  <button mat-button *ngIf="isAuthenticated" (click)="Logout()">Logout</button>
+</mat-toolbar>
