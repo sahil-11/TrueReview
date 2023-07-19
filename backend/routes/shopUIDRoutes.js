@@ -1,12 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {adduid} = require('../controllers/shopUidController');
-const { isAuthenticated } = require('../middleware/shopAuth');
-
+const {
+  adduid,
+  addPhoto,
+  updatePhoto,
+} = require("../controllers/shopUidController");
+const { isAuthenticated } = require("../middleware/shopAuth");
 
 //auth routes
 // /api/shop/adduid
-router.post('/shop/adduid',isAuthenticated, adduid);
-// router.get('/shop/me', isAuthenticated, userProfile);
+router.post("/shop/adduid", isAuthenticated, adduid);
+
+// /api/shop/addPhoto
+router.post("/shop/addphoto", addPhoto);
+
+// /api/shop/updatePhoto
+router.patch("/shop/updatephoto", updatePhoto);
 
 module.exports = router;
