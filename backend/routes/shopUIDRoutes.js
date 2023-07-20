@@ -12,9 +12,9 @@ const { isAuthenticated } = require("../middleware/shopAuth");
 router.post("/shop/adduid", isAuthenticated, adduid);
 
 // /api/shop/addPhoto
-router.post("/shop/addphoto", addPhoto);
+router.post("/shop/addphoto", isAuthenticated, addPhoto);
 
 // /api/shop/updatePhoto
-router.patch("/shop/updatephoto", updatePhoto);
+router.patch("/shop/updatephoto", isAuthenticated, updatePhoto);
 
 module.exports = router;

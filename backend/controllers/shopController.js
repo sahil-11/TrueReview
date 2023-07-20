@@ -5,11 +5,17 @@ const ErrorResponse = require("../utils/errorResponse");
 exports.singleShop = async (req, res, next) => {
   try {
     const shop = await Shop.findById(req.params.id); // accessing shop by shop id (basically shows the details of the shop which is clicked )
+    const totalStars = shop.totalStars;
+    const totalUsers = shop.totalUsers;
+    const rating = 0;
+    if (totalUsers > 0) rating = (totalStars / totalUsers).toFixed(2);
+
     res.status(200).json({
       success: true,
       shop,
       totalStars: shop.totalStars,
       totalUsers: shop.totalUsers,
+      rating: rating,
     });
   } catch (error) {
     next(error);

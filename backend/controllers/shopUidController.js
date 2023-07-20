@@ -26,7 +26,7 @@ exports.adduid = async (req, res, next) => {
 
 exports.updatePhoto = async (req, res, next) => {
   try {
-    const id = req.shop._id;
+    const id = req.body.shopId;
     const shop = await Shop.findById(id);
     const url = req.body.url;
     const index = req.body.index;
@@ -47,16 +47,17 @@ exports.updatePhoto = async (req, res, next) => {
 
 exports.addPhoto = async (req, res, next) => {
   try {
-    const id = req.shop._id;
+    const id = req.body.shopId;
     const shop = await Shop.findById(id);
     const url = req.body.url;
+    console.log(id, shop, url);
     if (shop.imageUrl.length > 4) {
       return next(new ErrorResponse("Image size over", 400)); // sanity check
     }
     shop.imageUrl.push(url);
     await shop.save();
     res.status(201).json({
-      ssuccess: true,
+      success: true,
       data: shop,
       imageUrl: shop.imageUrl,
     });

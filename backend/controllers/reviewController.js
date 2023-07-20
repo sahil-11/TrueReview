@@ -28,12 +28,15 @@ exports.addReview = async (req, res, next) => {
       shop.totalStars += stars;
       shop.totalUsers++;
       await shop.save();
+      const totalStars = shop.totalStars;
+      const totalUsers = shop.totalUsers;
+      const rating = 0;
+      if (totalUsers > 0) rating = (totalStars / totalUsers).toFixed(2);
       shop.uid.splice(index, 1);
       res.status(200).json({
         success: true,
         review_to_be_added,
-        totalStars: shop.totalStars,
-        totalUsers: shop.totalUsers,
+        rating: rating,
       });
     } else {
       return next(new ErrorResponse("Invalid UID!", 400));
