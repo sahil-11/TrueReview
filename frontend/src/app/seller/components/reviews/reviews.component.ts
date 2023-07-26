@@ -23,6 +23,7 @@ export class ReviewsComponent implements OnInit {
   pageEvent: PageEvent;
   reviewList: ReviewItems[];
   circleColor: string;
+  shopImgUrl: string;
   private colors = [
     '#EB7181', // red
     '#468547', // green
@@ -53,6 +54,7 @@ export class ReviewsComponent implements OnInit {
       this.service.getShop(id).subscribe({
         next: (res) => {
           this.shopName = res.shop.shopName;
+          this.shopImgUrl = res.shop.imageUrl[0];
         },
         error: (error) => {
           console.log(error);

@@ -50,7 +50,7 @@ exports.addPhoto = async (req, res, next) => {
     const id = req.body.shopId;
     const shop = await Shop.findById(id);
     const url = req.body.url;
-    console.log(id, shop, url);
+    // console.log(id, shop, url);
     if (shop.imageUrl.length > 4) {
       return next(new ErrorResponse("Image size over", 400)); // sanity check
     }

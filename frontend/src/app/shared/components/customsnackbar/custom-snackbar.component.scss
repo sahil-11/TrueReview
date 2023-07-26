@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(226, 19, 19);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+// span {
+//   font-weight: bold;
+//   margin-right: 8px;
+// }
+
+// button {
+//   color: #fff;
+// }
+.custom-snackbar {
+  color: #fff;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.custom-snackbar.success {
+  background-color: #4caf50;
+}
+
+.custom-snackbar.error {
+  background-color: #f44336;
+}
+
+.custom-snackbar.warning {
+  background-color: #ff9800;
+}
+
+.custom-snackbar.info {
+  background-color: #2196f3;
+}
+
+.custom-snackbar-action {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.custom-snackbar-action:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

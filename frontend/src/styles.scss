@@ -36,28 +36,35 @@ $TrueReview-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,300;1,600;1,700;1,800;1,900&display=swap");
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+// @import "~ngx-bar-rating/themes/br-default-theme";
+// @import "~ngx-bar-rating/themes/br-horizontal-theme";
 html,
 body {
   height: 100%;
+  font-family: "Prompt", sans-serif !important;
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+body::-webkit-scrollbar {
+  display: none;
 }
-
-/* Importing Bootstrap SCSS file. */
-@import "bootstrap/scss/bootstrap";
-
+// body {
+//   margin: 0;
+//   font-family: "Prompt", sans-serif !important;
+// }
 .green-snackbar {
-  background: rgb(65, 252, 134);
+  background-color: rgb(65, 252, 134) !important;
   color: white;
 }
 .green-snackbar button {
-  background-color: rgb(65, 252, 134);
+  background-color: rgb(65, 252, 134) !important;
   color: white;
   border: none;
 }
 .red-snackbar {
+  background-color: #f44336;
   background: #f44336;
   color: white;
 }
@@ -65,4 +72,108 @@ body {
   background-color: #f44336;
   color: white !important;
   border: none;
+}
+.text-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+// .mat-mdc-snack-bar-container .mdc-snackbar__label {
+//   font-size: var(--mdc-snackbar-supporting-text-size);
+//   font-family: var(--mdc-snackbar-supporting-text-font);
+//   font-weight: var(--mdc-snackbar-supporting-text-weight);
+//   line-height: var(--mdc-snackbar-supporting-text-line-height);
+//   background-color: #f44336;
+// }
+// .mat-mdc-snack-bar-container {
+//   --mdc-snackbar-container-color: #f44336;
+//   --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87);
+//   --mat-snack-bar-button-color: #ff4081;
+// }
+.mat-snack-bar-container {
+  background-color: red;
+}
+.centered {
+  font-family: sans-serif;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.dropzone {
+  height: 100px;
+  display: table;
+  width: 100%;
+  background-color: #eee;
+  border: dotted 2px #aaa;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.textLink {
+  background-color: #f34336;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.textLink::before {
+  content: "\f093";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #fff;
+  font-size: large;
+  margin-right: 10px;
+}
+
+.text-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.centered {
+  font-family: sans-serif;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.fileItem {
+  width: calc(25% - 6px);
+  overflow: hidden;
+  height: fit-content;
+  margin: 3px;
+  padding: 10px;
+  display: block;
+  position: relative;
+  float: left;
+  border: 2px dashed #778899;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.fileItem:hover {
+  border: 2px solid #c33838;
+  background-color: #c33838bf;
+}
+.fileItem:hover .fileItemIcon::before {
+  content: "\f00d";
+  color: whitesmoke;
+}
+.fileItem:hover .fileItemText {
+  color: whitesmoke;
+}
+.fileItemIconDiv {
+  text-align: center;
+  align-items: center;
+}
+.fileItemIcon::before {
+  font-style: normal;
+  content: "\f15b";
+  color: #778899;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.fileItemText {
+  text-align: center;
+  margin-top: 10px;
+  height: 40px;
 }

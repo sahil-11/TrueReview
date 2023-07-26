@@ -107,6 +107,7 @@
                     The password doesn't match!
                   </mat-error>
                 </mat-form-field>
+
                 <button
                   mat-raised-button
                   color="primary"
@@ -207,7 +208,7 @@
                             *ngFor="let category of categories"
                             [value]="category.value"
                           >
-                            {{ category.viewValue }}
+                            {{ category.label }}
                           </mat-option>
                         </mat-select>
                         <mat-error
@@ -235,7 +236,7 @@
                             *ngFor="let location of locations"
                             [value]="location.value"
                           >
-                            {{ location.viewValue }}
+                            {{ location.label }}
                           </mat-option>
                         </mat-select>
                         <mat-error
@@ -303,10 +304,100 @@
                   </mat-error>
                 </mat-form-field>
 
+                <div class="row">
+                  <div class="col-12 mb-4">
+                    <div style="padding: 15px">
+                      <div>
+                        <div
+                          class="dropzone"
+                          fileDragDrop
+                          (filesChangeEmiter)="onFileChange($event)"
+                        >
+                          <div class="text-wrapper">
+                            <div class="centered">
+                              <input
+                                type="file"
+                                name="file"
+                                id="file"
+                                (change)="onFileChanges($event.target)"
+                                multiple
+                                formControlName="sellerImg"
+                              />
+                              <label for="file"
+                                ><span class="textLink">Select your file</span>
+                                or Drop it here!</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                      <div
+                        class="row img-upload-success"
+                        *ngIf="imageUploadSuccess"
+                      >
+                        <div
+                          class="col-12 d-flex justify-content-center align-items-center"
+                        >
+                          <h6 style="font-style: italic">
+                            Image Uploaded Successfully !!!
+                          </h6>
+                        </div>
+                      </div>
+                      <h5
+                        mat-subheader
+                        *ngIf="files.length && !imageUploadSuccess"
+                      >
+                        Preview
+                      </h5>
+
+                      <div
+                        class="row"
+                        *ngIf="files.length && !imageUploadSuccess"
+                      >
+                        <div
+                          class="col-lg-6 col-sm-12 d-flex justify-content-center"
+                        >
+                          <div
+                            class="row fileItem"
+                            *ngFor="let f of files; let ind = index"
+                          >
+                            <div
+                              class="col-sm-12 fileItemIconDiv"
+                              (click)="openConfirmDialog(ind)"
+                            >
+                              <i class="fa-6x fileItemIcon"></i>
+                              <!-- <mat-icon>clear</mat-icon> -->
+                            </div>
+                            <div class="col-sm-12 fileItemText">
+                              <span>{{ f.name }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="col-lg-6 col-sm-12 d-flex align-items-center"
+                        >
+                          <button
+                            class="uploadButton"
+                            (click)="uploadImage()"
+                            [ngClass]="
+                              uploadingImg ? 'uploading' : 'uploadButton'
+                            "
+                          >
+                            {{ uploadingImg ? "Uploading..." : "Upload" }}
+                          </button>
+                          <span class="bg-success" *ngIf="imageUploadSuccess">
+                            Uploaded Image SuccessFully
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <button
                   mat-raised-buttons
                   color="primary"
-                  [disabled]="sellerRegisterForm.invalid"
+                  [disabled]="sellerRegisterForm.invalid || !imageUploadSuccess"
                   (click)="sellerRegister()"
                 >
                   Register

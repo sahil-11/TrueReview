@@ -5,6 +5,8 @@ import { RegisterComponent } from './shared/components/register/register.compone
 import { HomeComponent } from './shared/components/home/home.component';
 import { ShopsComponent } from './shared/components/shops/shops.component';
 import { ReviewsComponent } from './shared/components/reviews/reviews.component';
+import { authGuard } from './mainservices/auth.guard';
+import { NotfoundComponent } from './shared/components/notfound/notfound.component';
 // import { ReviewsComponent } from './seller/components/reviews/reviews.component';
 
 const routes: Routes = [
@@ -12,8 +14,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'shops', component: ShopsComponent },
   { path: 'shops/:id', component: ReviewsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', canActivate: [authGuard], component: LoginComponent },
+  { path: 'register', canActivate: [authGuard], component: RegisterComponent },
 
   {
     path: 'user',
@@ -24,6 +26,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./seller/seller.module').then((m) => m.SellerModule),
   },
+  { path: '**', component: NotfoundComponent },
   // { path: 'seller/review/:id', component: ReviewsComponent },
 ];
 

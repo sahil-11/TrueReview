@@ -7,7 +7,9 @@ export interface Shop {
   password: string;
   uid: string[];
   role: number;
+  rating: number;
   createdAt: string;
   updatedAt: string;
+  imageUrl: string[];
   __v: number;
 }

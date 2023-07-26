@@ -1,5 +1,11 @@
-<app-navbar (logout)="logout()"></app-navbar>
+<app-navbar></app-navbar>
+<ng-container *ngIf="loader.getLoadingState()" class="loader">
+  <div class="loader">
+    <div class="loaderBar"></div>
+  </div>
+</ng-container>
+<!-- Display your loader UI here -->
 
-<ng-container>
+<ng-container style="min-height: 100vh">
   <router-outlet></router-outlet>
 </ng-container>

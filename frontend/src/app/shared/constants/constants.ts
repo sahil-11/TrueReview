@@ -84,6 +84,10 @@ export const categories: Category[] = [
   { value: 'Food', label: 'Food' },
   { value: 'Clothes', label: 'Clothes' },
   { value: 'Shoes', label: 'Shoes' },
+  { value: 'Camera', label: 'Camera' },
+  { value: 'Phones', label: 'Phones' },
+  { value: 'Gromming', label: 'Gromming' },
+  { value: 'Sports', label: 'Sports' },
 ];
 
 export const locations: Location[] = [

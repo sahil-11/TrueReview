@@ -7,8 +7,8 @@ exports.singleShop = async (req, res, next) => {
     const shop = await Shop.findById(req.params.id); // accessing shop by shop id (basically shows the details of the shop which is clicked )
     const totalStars = shop.totalStars;
     const totalUsers = shop.totalUsers;
-    const rating = 0;
-    if (totalUsers > 0) rating = (totalStars / totalUsers).toFixed(2);
+    let rating = 0;
+    if (totalUsers > 0) rating = (totalStars / totalUsers).toFixed(1);
 
     res.status(200).json({
       success: true,
@@ -27,16 +27,19 @@ exports.showShops = async (req, res, next) => {
   //enable search
   const keyword = req.query.keyword
     ? {
-        title: {
+        shopName: {
           $regex: req.query.keyword,
           $options: "i",
         },
       }
     : {};
+
+  // for searching for a keyword , we could have indexed the "shopName" as well, ut since it's a write intensive collection,
+  // it wont be space efficient to approach this way.
   let sorting = req.query.sort;
   if (sorting === "oldest") sorting = 1;
   else sorting = -1;
-  console.log(sorting);
+  // console.log(sorting);
 
   // filter shops by category ids
   let ids = [];

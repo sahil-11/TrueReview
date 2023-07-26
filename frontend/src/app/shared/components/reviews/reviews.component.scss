@@ -1,26 +1,31 @@
 .main {
-  margin-top: 1%;
+  margin-top: 10px;
 }
 
 .card {
+  min-width: 80%;
   max-width: 80%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: #fff;
+  box-shadow: none;
 }
 
-.header {
-  flex: 20;
+.footer {
+  height: 60px;
+  background-color: #3f51b5;
+  margin: 0px 0.75rem 0px 0.75rem;
 }
-.header mat-card-title {
+.footer mat-card-title {
   font-size: larger;
-  font-weight: 800;
-  margin-bottom: 10px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .image-container {
-  flex: 85;
+  flex: 80;
 }
 
 .image-container img {
@@ -33,10 +38,18 @@
   position: relative;
   height: 100%;
   min-width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 12px;
+  background: #e0e0e0;
+  box-shadow: inset -7px 7px 22px #9d9d9d, inset 7px -7px 22px #ffffff;
 }
 
 .reviews {
-  margin: 1px 2px 1px 2px;
+  margin: 1px 2px 1px 15px;
+}
+.review-list {
+  padding: 2px;
 }
 .footer-paginator {
   position: absolute;
@@ -54,9 +67,8 @@
 }
 
 img {
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 80vw;
+  height: 80vh;
 }
 
 .initials {
@@ -76,4 +88,106 @@ img {
   font-weight: normal;
   font-size: small;
   font-style: italic;
+}
+
+.jumbotron {
+  h1 {
+    color: rgb(157, 153, 153);
+  }
+  height: 30rem;
+}
+
+.mat-mdc-form-field {
+  min-width: 100%;
+}
+
+.upload-container {
+  min-height: 100% !important;
+  padding: 0px 12px 0px 12px;
+}
+
+.dropzone-review {
+  min-height: 100% !important;
+}
+
+// text
+
+.carousel-caption-custom {
+  position: absolute;
+  right: 0 !important;
+  margin-top: 0;
+  top: 0;
+  color: #fff;
+  text-align: center;
+
+  // height: 40px;
+  // width: 50px;
+  margin: 5px;
+  z-index: 2;
+}
+
+// .mat-mdc-button > .mat-icon {
+//   margin-right: 15px !important;
+//   color: white;
+// }
+
+.carousel-control-next {
+  top: 50px !important;
+}
+.picsum-img-wrapper {
+  height: 500px;
+}
+
+.crosual-action-buttons > button {
+  margin: 2px;
+}
+.cancel-button {
+  color: grey;
+}
+
+.cancel-button-container {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 0px 10px;
+}
+// .neumorphic-button {
+//   padding: 0.85rem;
+//   background: #efefef;
+//   border: none;
+//   border-radius: 0.5rem;
+//   color: #444;
+//   font-size: 0.85rem;
+//   font-weight: 700;
+//   letter-spacing: 0.2rem;
+//   text-align: center;
+//   outline: none;
+//   cursor: pointer;
+//   transition: 0.2s ease-in-out;
+//   box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
+//     -6px -6px 10px rgba(255, 255, 255, 0.5),
+//     6px 6px 8px rgba(255, 255, 255, 0.075), 6px 6px 10px rgba(0, 0, 0, 0.15);
+// }
+
+// .neumorphic-button:hover {
+//   box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6),
+//     -2px -2px 4px rgba(255, 255, 255, 0.4),
+//     2px 2px 2px rgba(255, 255, 255, 0.05), 2px 2px 4px rgba(0, 0, 0, 0.1);
+// }
+// button:active {
+//   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.7),
+//     inset -2px -2px 4px rgba(255, 255, 255, 0.5),
+//     inset 2px 2px 2px rgba(255, 255, 255, 0.075),
+//     inset 2px 2px 4px rgba(0, 0, 0, 0.15);
+// }
+
+// .button-spects {
+//   margin: 20px -20px 0px 2px;
+//   width: 20%;
+// }
+@media only screen and (max-width: 600px) {
+  .card {
+    min-width: 90%;
+    max-width: 90%;
+  }
 }

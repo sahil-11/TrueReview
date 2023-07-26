@@ -4,6 +4,7 @@ import { SessionService } from './shared/services/session/session.service';
 import { AuthenticationService } from './shared/services/authentication/authentication.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoaderService } from './mainservices/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ export class AppComponent implements OnInit {
   role: string | null = null;
   constructor(
     private session: SessionService,
-    private auth: AuthenticationService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public loader: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -31,45 +32,6 @@ export class AppComponent implements OnInit {
 
   getSession() {
     return this.session.getSession();
-  }
-
-  logout() {
-    if (this.role !== null && this.role === 'user') {
-      this.logoutUser();
-    }
-    if (this.role !== null && this.role === 'seller') {
-      this.logoutSeller();
-    }
-  }
-
-  logoutSeller() {
-    this.auth.logoutSeller().subscribe({
-      next: (res: any) => {
-        if (res.success === true) {
-          this.isAuthenticated = false;
-          this.session.clearSession();
-          this.router.navigate(['/home']);
-        }
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
-
-  logoutUser() {
-    this.auth.logoutUser().subscribe({
-      next: (res: any) => {
-        if (res.success === true) {
-          this.isAuthenticated = false;
-          this.session.clearSession();
-          this.router.navigate(['/home']);
-        }
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
   }
 
   // Snackbar that opens with success background

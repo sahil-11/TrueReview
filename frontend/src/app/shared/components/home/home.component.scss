@@ -48,10 +48,6 @@ aside {
   background-color: #6c757d;
 }
 
-.social-buttons-circle-dark-grey {
-  background: #1a1d20;
-}
-
 /* img css */
 
 /* .testimonals-container img{
@@ -134,22 +130,23 @@ ul.social-buttons {
 ul.social-buttons li a:active,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:hover {
-  background-color: #fec503;
+  transform: scale(1.02);
 }
 
 ul.social-buttons li a {
   font-size: 20px;
-  line-height: 40px;
-  display: block;
-  width: 40px;
-  height: 40px;
+  line-height: 80px;
+  display: inline-block;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  color: #fff;
-  border-radius: 100%;
+
   outline: 0;
-  background-color: #1a1d20;
+
+  img {
+    height: 80px;
+    width: 80px;
+  }
 }
 
 footer .quick-links {
@@ -167,4 +164,59 @@ footer .quick-links {
 .fa-ellipsis-h {
   color: white;
   padding: 2rem 0;
+}
+
+.img-main {
+  margin: 4rem 0 0 4rem;
+}
+.img-fluid {
+  filter: drop-shadow(0px 30px 6px black);
+}
+
+.rating li:hover ~ li::before {
+  display: none;
+}
+
+.btn-class {
+  display: inline-flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  line-height: 1.2;
+  border-radius: 2.5rem;
+  font-weight: 900;
+  border: 0;
+  height: 4rem;
+  min-width: 5rem;
+  font-size: 1rem;
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 1.5rem;
+  background: linear-gradient(149deg, #b93108 0%, #ff4d0d 72.88%);
+  color: whitesmoke;
+  letter-spacing: 0.08rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
+  box-shadow: 15.8975px 26.4579px 61.7333px rgba(49, 13, 2, 0.3835),
+    inset -6.39433px -10.642px 12.4153px #aa2d08,
+    inset 6.39433px 10.642px 12.4153px #ff510e;
+  font-family: monospace;
+}
+
+.card-container {
+  margin-top: 0;
+}
+
+.center-vertical {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%, -50%);
 }

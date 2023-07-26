@@ -1,55 +1,164 @@
-<mat-grid-list cols="5" rowHeight="80vh" class="main">
-  <mat-grid-tile colspan="2"
-    ><mat-card class="card">
-      <mat-card-header class="header">
-        <mat-card-title>{{ shopName }}</mat-card-title>
-      </mat-card-header>
+<div class="row" style="height: 80vh">
+  <div
+    class="col-md-5 col-lg-5 col-sm-12 d-flex justify-content-center mt-4 p-3"
+  >
+    <mat-card class="card" [ngStyle]="{ 'background-color': backgroundcolor }">
       <div class="image-container">
-        <img
-          mat-card-image
-          src="../../../../assets/default.jpg"
-          alt="food-image"
-          class="image"
-        />
+        <div class="container" *ngIf="shopImages.length && !addImg">
+          <div class="row">
+            <ngb-carousel
+              #carousel
+              [interval]="100000000"
+              [pauseOnHover]="pauseOnHover"
+              [pauseOnFocus]="pauseOnFocus"
+              (slide)="onSlide($event)"
+            >
+              <ng-template
+                ngbSlide
+                *ngFor="let shop of shopImages; index as i"
+                [id]="'slideId_' + i"
+              >
+                <div class="carousel-caption-custom">
+                  <span
+                    *ngIf="
+                      sessionData.isAuthenticated &&
+                      sessionData.role === 'seller' &&
+                      sessionData.userid === currentId
+                    "
+                    class="crosual-action-buttons"
+                    ><button mat-mini-fab color="warn" (click)="updateImage(i)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button
+                      *ngIf="!addImg && shopImages.length <= 5"
+                      (click)="showDropBox()"
+                      mat-mini-fab
+                      color="warn"
+                      aria-label="Example icon button with a home icon"
+                    >
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </span>
+                </div>
+
+                <div class="picsum-img-wrapper">
+                  <ngx-skeleton-loader
+                    *ngIf="!isImageLoaded"
+                    [theme]="{
+                      'border-radius': '5px',
+                      height: '100%',
+                      'background-color': '#d2d2d2',
+                      border: '1px solid white'
+                    }"
+                  ></ngx-skeleton-loader>
+                  <img
+                    [hidden]="!isImageLoaded"
+                    [src]="shop.url"
+                    alt="My image {{ i + 1 }} description"
+                    (load)="imageLoaded($event)"
+                    #imageElement
+                  />
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+        </div>
+        <div *ngIf="addImg" class="row upload-container">
+          <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="cancel-button-container">
+              <button mat-icon-button class="cancel-button" (click)="cancel()">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </div>
+            <div
+              *ngIf="!uploadingImg"
+              class="dropzone dropzone-review"
+              fileDragDrop
+              (filesChangeEmiter)="onFileChange($event)"
+            >
+              <div class="text-wrapper">
+                <div class="centered">
+                  <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    (change)="onFileChanges($event.target)"
+                    multiple
+                  />
+                  <label for="file"
+                    ><span class="textLink">Select your file</span> or Drop it
+                    here!</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div *ngIf="uploadingImg">
+              <app-loader></app-loader>
+            </div>
+          </div>
+        </div>
       </div>
+      <mat-card-footer
+        class="row footer d-flex justify-content-between align-items-center px-4 footer-class"
+      >
+        <div class="col-6">
+          <mat-card-title>{{ shopName }}</mat-card-title>
+        </div>
+        <div class="col-6 d-flex justify-content-end" style="height: 35px">
+          <rating class="d-flex" [readOnly]="true" [rate]="rating"></rating>
+        </div>
+      </mat-card-footer>
     </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="3">
+  </div>
+  <div
+    class="col-md-7 col-lg-7 col-sm-12 d-flex justify-content-start mt-4 p-3"
+  >
     <div class="review-container">
       <div *ngIf="isAuthenticated" class="row justify-content-end">
-        <div class="col-3">
+        <div class="col-2 d-flex justify-content-end m-3">
           <button
             mat-raised-button
             color="warn"
             (click)="openModal(mytemplate)"
           >
-            Add UID
+            {{ sessionData?.role === "user" ? "Add Review" : "Add Uid" }}
           </button>
         </div>
       </div>
       <div class="reviews" *ngIf="reviewList?.length; else noreviews">
-        <mat-list-item *ngFor="let review of reviewList; let i = index">
-          <div class="review-content">
-            <div
-              class="circle"
-              [ngStyle]="{
-                'background-color': getInitials(review.userName, i).color
-              }"
-            >
-              <div class="initials">
-                {{ getInitials(review.userName, i).initials }}
+        <ul style="list-style-type: none">
+          <li
+            *ngFor="let review of reviewList; let i = index"
+            class="review-list"
+          >
+            <div class="review-content">
+              <div
+                class="circle"
+                [ngStyle]="{
+                  'background-color': getInitials(review.userName, i).color
+                }"
+              >
+                <div class="initials">
+                  {{ getInitials(review.userName, i).initials }}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="review-content">
-            <div class="username">{{ review.userName }}</div>
-            <div class="review-text">{{ review.review }}</div>
-          </div>
-        </mat-list-item>
+            <div class="review-content">
+              <div class="username">{{ review.userName }}</div>
+              <div class="review-text">{{ review.review }}</div>
+            </div>
+          </li>
+        </ul>
       </div>
-      <ng-template #noreviews> No reviews yet </ng-template>
-      <div class="footer-paginator">
+      <ng-template #noreviews>
+        <div class="jumbotron jumbotron-fluid d-flex align-items-center">
+          <div class="container d-flex justify-content-center">
+            <h1 class="display-4"><i>No Reviews Yet</i></h1>
+          </div>
+        </div>
+      </ng-template>
+      <div class="footer-paginator" *ngIf="reviewList?.length">
         <mat-paginator
           #paginator
           class="demo-paginator"
@@ -60,17 +169,19 @@
           [showFirstLastButtons]="showFirstLastButtons"
           [hidePageSize]="hidePageSize"
           [pageIndex]="pageIndex"
-          aria-label="Select page"
         >
         </mat-paginator>
       </div>
     </div>
-  </mat-grid-tile>
-</mat-grid-list>
+  </div>
+</div>
 
 <ng-template #mytemplate>
-  <h1 mat-dialog-title>Hi {{ data.name }}</h1>
-  <div mat-dialog-content>
+  <h1 mat-dialog-title>
+    <strong>Hi {{ data.name }}</strong>
+  </h1>
+
+  <div mat-dialog-content class="d-flex flex-column justify-content-center">
     <p>Please enter UID</p>
     <mat-form-field>
       <mat-label>UID</mat-label>
@@ -83,12 +194,24 @@
       <mat-label>Review</mat-label>
       <textarea matInput [(ngModel)]="data.review"></textarea>
     </mat-form-field>
+    <div
+      class="col-12"
+      *ngIf="sessionData != null && sessionData?.role === 'user'"
+    >
+      <div style="margin-bottom: 10px"><Strong>RATE SHOP:</Strong></div>
+      <rating
+        [readOnly]="false"
+        (userRating)="userRating($event)"
+        [isModal]="true"
+      ></rating>
+    </div>
   </div>
-  <div mat-dialog-actions>
+  <div mat-dialog-actions align="end" class="m-3">
     <button mat-button (click)="onCancelClick()">Cancel</button>
     <button
       *ngIf="sessionData != null && sessionData?.role === 'seller'"
-      mat-button
+      mat-raised-button
+      color="warn"
       [mat-dialog-close]="data.uid"
       cdkFocusInitial
       (click)="addUID(data.uid)"
@@ -97,10 +220,14 @@
     </button>
     <button
       *ngIf="sessionData != null && sessionData?.role === 'user'"
-      mat-button
+      mat-raised-button
+      color="warn"
       [mat-dialog-close]="data.uid"
       cdkFocusInitial
       (click)="addReview(data.uid, data.review)"
+      [disabled]="
+        data.review === '' || data.uid === '' || userRatingValue === null
+      "
     >
       Add Review
     </button>

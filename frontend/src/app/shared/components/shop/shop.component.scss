@@ -1,5 +1,5 @@
-body {
-  padding: 2rem 0rem;
+.card {
+  margin: 10px;
 }
 .card-img-overlay {
   background-color: rgba(#000, 0.5);
@@ -36,4 +36,48 @@ body {
   backdrop-filter: blur(30px);
   font-size: 16px;
   letter-spacing: 2px;
+}
+
+.hidden {
+  display: none;
+}
+.skeleton-card {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.skeleton-effect {
+  width: 100%;
+  object-fit: cover;
+  /* Add the following property to control the aspect ratio */
+  aspect-ratio: 16/9;
+}
+
+.skeleton-effect img {
+  display: flex;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
+}
+
+.loading .skeleton-effect {
+  background-color: gray;
+  background: linear-gradient(
+      147deg,
+      rgba(124, 120, 120, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(129, 125, 125, 0) 60%
+    )
+    gray;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loadingkey ease-in-out infinite;
+}
+
+@keyframes loadingkey {
+  to {
+    background-position-x: -20%;
+  }
 }

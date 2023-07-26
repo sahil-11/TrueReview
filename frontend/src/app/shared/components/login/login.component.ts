@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 import { Router } from '@angular/router';
 import { Seller } from '../../models/sellerModel';
 import { SessionService } from '../../services/session/session.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private auth: AuthenticationService,
     private router: Router,
-    private session: SessionService
+    private session: SessionService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -50,10 +52,12 @@ export class LoginComponent {
             };
             this.session.saveSession(sessionData);
             this.router.navigate([`home`]);
+            this.snackbarService.showSuccessMessage('Logged In Successfully');
           }
         },
         error: (error) => {
           console.log(error);
+          this.snackbarService.showErrorMessage('Wrong email or password');
         },
       });
     }
@@ -74,10 +78,12 @@ export class LoginComponent {
             this.session.saveSession(sessionData);
 
             this.router.navigate(['shops/' + response.shop._id]);
+            this.snackbarService.showSuccessMessage('Logged In Successfully');
           }
         },
         error: (error) => {
           console.log(error);
+          this.snackbarService.showErrorMessage('Wrong email or password');
         },
       });
     }

@@ -1,17 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { URL } from '../../constants/constants';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Seller } from '../../models/sellerModel';
 import { User, UserResponse } from '../../models/userModel';
+import { SessionService } from '../session/session.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   // baseUrl = 'http://localhost:9000';
+  isAuthenticated: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private session: SessionService) {}
 
   userLogin(form: any): Observable<UserResponse> {
     return this.http.post<UserResponse>(URL.baseUrl + '/api/signin', form);
@@ -37,7 +39,10 @@ export class AuthenticationService {
     return this.http.get(URL.baseUrl + '/api/shop/logout');
   }
 
-  // isSellerLoggedIn(value: boolean) {
-  //   this.sellerLoggedIn.next({ isAuthenticated: value, role: 'seller' });
-  // }
+  getAuthenticated() {
+    this.session.getAuthenticatedUser().subscribe((res) => {
+      this.isAuthenticated = res.isAuthenticated;
+    });
+    return this.isAuthenticated;
+  }
 }

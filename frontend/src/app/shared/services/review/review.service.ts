@@ -24,11 +24,14 @@ export class ReviewService {
       { headers }
     );
   }
+
+  //add Review
   addReview(
     id: string,
     review: string,
     token: string,
-    shopId: string
+    shopId: string,
+    rating: number
   ): Observable<Seller> {
     console.log(id, token);
     const headers = new HttpHeaders({
@@ -39,7 +42,9 @@ export class ReviewService {
     const payload = {
       transaction_id: id,
       review: review,
+      rating: rating,
     };
+    console.log(shopId);
     return this.http.post<Seller>(
       URL.baseUrl + `/api/review/add/${shopId}`,
       payload,

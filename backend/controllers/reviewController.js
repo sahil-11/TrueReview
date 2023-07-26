@@ -5,9 +5,11 @@ const ErrorResponse = require("../utils/errorResponse");
 
 exports.addReview = async (req, res, next) => {
   const feedback = req.body.review;
-  //const stars = req.body.stars;
+  const stars = req.body.rating;
+
   const shopId = req.params.id;
-  console.log(req.body);
+  // console.log(shopId);
+
   const transactiondId = req.body.transaction_id;
   const shop = await Shop.findById(shopId);
   const userId = req.user._id;
@@ -16,7 +18,7 @@ exports.addReview = async (req, res, next) => {
 
   try {
     const index = shop.uid.indexOf(transactiondId);
-    console.log(index); // if index === -1 => transactionID is not present in the uid array
+    //console.log(index); // if index === -1 => transactionID is not present in the uid array
     if (index > -1) {
       const review_to_be_added = await Review.create({
         review: feedback,
@@ -30,8 +32,8 @@ exports.addReview = async (req, res, next) => {
       await shop.save();
       const totalStars = shop.totalStars;
       const totalUsers = shop.totalUsers;
-      const rating = 0;
-      if (totalUsers > 0) rating = (totalStars / totalUsers).toFixed(2);
+      let rating = 0;
+      if (totalUsers > 0) rating = (totalStars / totalUsers).toFixed(1);
       shop.uid.splice(index, 1);
       res.status(200).json({
         success: true,
@@ -42,6 +44,7 @@ exports.addReview = async (req, res, next) => {
       return next(new ErrorResponse("Invalid UID!", 400));
     }
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

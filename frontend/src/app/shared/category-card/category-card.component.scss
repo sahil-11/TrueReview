@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,300;1,600;1,700;1,800;1,900&display=swap");
+$gr-1: linear-gradient(170deg, #01e4f8 0%, #1d3ede 100%);
+$gr-2: linear-gradient(170deg, #b4ec51 0%, #429321 100%);
+$gr-3: linear-gradient(170deg, #fbb03b, #fb8d3a, #f56941, #e8434d, #d4145a);
+$gr-4: linear-gradient(170deg, #4e65ff 0%, #23c5dd 100%);
+$gr-5: linear-gradient(170deg, #051937 0%, #a8eb12 100%);
+$gr-6: linear-gradient(170deg, #ff8200 0%, #b10000 100%);
+$gr-7: linear-gradient(170deg, #f8ff2e 0%, #04790d 100%);
+
+.gr-1 {
+  background: $gr-1;
+}
+.gr-2 {
+  background: $gr-2;
+}
+.gr-3 {
+  background: $gr-3;
+}
+.gr-4 {
+  background: $gr-4;
+}
+.gr-5 {
+  background: $gr-5;
+}
+.gr-6 {
+  background: $gr-6;
+}
+.gr-7 {
+  background: $gr-7;
+}
+
+* {
+  transition: 0.5s;
+}
+
+.h-100 {
+  height: auto;
+  margin-top: 2rem;
+}
+.align-middle {
+  position: relative;
+  top: 50%;
+}
+
+.column {
+  margin-top: 2.5rem;
+  padding-left: 0rem;
+  // max-width: 32%;
+  &:hover {
+    padding-left: 0;
+    .card .txt {
+      margin-right: 1rem;
+      h1,
+      p {
+        color: rgba(255, 255, 255, 1);
+        opacity: 1;
+      }
+    }
+    a {
+      color: rgba(255, 255, 255, 1);
+      &:after {
+        width: 10%;
+      }
+    }
+    img {
+      transform: scale(1.2);
+      margin-left: 1rem;
+    }
+  }
+}
+.card {
+  min-height: 170px;
+  margin: 0px 15px 0px 15px;
+  padding: 1.7rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  letter-spacing: 0.07rem;
+  font-family: "Prompt", sans-serif;
+  box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
+  .txt {
+    margin-left: 0;
+    z-index: 1;
+    h1 {
+      font-size: 3rem;
+      font-weight: 300;
+      text-shadow: 0px 0px 0 rgb(244, 244, 244), -1px 1px 0 rgb(233, 233, 233),
+        -2px 2px 0 rgb(222, 222, 222), -3px 3px 0 rgb(211, 211, 211),
+        -4px 4px 3px rgba(0, 0, 0, 0.95), -4px 4px 1px rgba(0, 0, 0, 0.5),
+        0px 0px 3px rgba(0, 0, 0, 0.2);
+      color: rgba(255, 255, 255, 1);
+      opacity: 1;
+      text-align: right;
+    }
+    p {
+      font-size: 0.7rem;
+      font-family: "Open Sans", sans-serif;
+      letter-spacing: 0rem;
+      margin-top: 33px;
+      opacity: 0;
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+  a {
+    z-index: 3;
+    font-size: 0.7rem;
+    margin-left: 1rem;
+    position: relative;
+    bottom: -0.5rem;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      height: 0.5em;
+      width: 0;
+      margin-right: -100%;
+      margin-left: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 1);
+      transition: 0.5s;
+    }
+  }
+  .ico-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    img {
+      max-height: 100%;
+      min-height: 100%;
+    }
+    // overflow: hidden;
+  }
+
+  .ico-food {
+    transform: translate(-25%, -40%);
+    width: 300px;
+    height: 300px;
+  }
+
+  // .ico-food:hover {
+  //   transform: skewX(3deg);
+  // }
+
+  .ico-card-cam {
+    transform: translate(-15%, -20%);
+    width: 220px;
+    height: 220px;
+  }
+
+  .ico-card-ball {
+    transform: translate(-28%, -40%);
+    width: 250px;
+    height: 250px;
+  }
+  .ico-card-phone {
+    transform: translate(-28%, -20%);
+    width: 250px;
+    height: 250px;
+  }
+  .ico-shoe {
+    transform: translate(-24%, -40%);
+    width: 300px;
+    height: 300px;
+  }
+
+  .ico-clothes {
+    transform: translate(-30%, -20%);
+    height: 250px;
+    height: 250px;
+  }
+  img {
+    filter: drop-shadow(1px 2px 3px black);
+  }
+}

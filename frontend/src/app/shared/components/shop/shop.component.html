@@ -1,9 +1,13 @@
+<div class="skeleton-card loading" #divIntersectContainer [hidden]="isLoaded">
+  <div class="skeleton-effect"></div>
+</div>
 <div
   class="card"
   (mouseenter)="onCardHover(true)"
   (mouseleave)="onCardHover(false)"
+  [hidden]="!isLoaded"
 >
-  <img class="card-img" src="../../../../assets/default.jpg" />
+  <img class="card-img" [src]="imageUrl" (load)="imageLoader($event)" />
   <div
     class="card-img-overlay text-white d-flex flex-column justify-content-end align-items-end"
     [ngClass]="{ 'card-img-overay-hover': isHovered }"
