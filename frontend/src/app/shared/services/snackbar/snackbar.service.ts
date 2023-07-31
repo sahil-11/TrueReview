@@ -16,21 +16,19 @@ export class SnackbarService {
   constructor(private snackBar: MatSnackBar) {}
 
   showErrorMessage(message: string) {
-    this.snackBar.open(message, 'Close', {
-      panelClass: ['red-snackbar'],
+    this.snackBar.open(message, 'X', {
+      panelClass: ['error'],
       horizontalPosition: 'center',
       verticalPosition: 'top',
-
-      duration: 3000, // Duration in milliseconds (adjust as needed)
+      duration: 3000,
     });
   }
   showSuccessMessage(message: string) {
-    this.snackBar.open(message, 'Close', {
-      panelClass: ['green-snackbar'],
+    this.snackBar.open(message, 'X', {
+      panelClass: ['success'],
       horizontalPosition: 'center',
       verticalPosition: 'top',
-
-      duration: 3000, // Duration in milliseconds (adjust as needed)
+      duration: 3000,
     });
   }
 }

@@ -7,6 +7,7 @@
   (mouseleave)="onCardHover(false)"
   [hidden]="!isLoaded"
 >
+  <div class="ribbon"><span>POPULAR</span></div>
   <img class="card-img" [src]="imageUrl" (load)="imageLoader($event)" />
   <div
     class="card-img-overlay text-white d-flex flex-column justify-content-end align-items-end"

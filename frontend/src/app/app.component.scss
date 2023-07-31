@@ -19,14 +19,14 @@
 }
 .loader .loaderBar {
   position: absolute;
-  border-radius: 10px;
+  border-radius: 5px;
   top: 0;
   right: 100%;
   bottom: 0;
   left: 0;
   background: navy;
   width: 0;
-  animation: borealisBar 2s linear infinite;
+  animation: borealisBar 1s linear infinite;
 }
 
 @keyframes borealisBar {

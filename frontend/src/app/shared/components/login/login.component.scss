@@ -1,15 +1,4 @@
-.tab-group-class {
-  margin-top: 25px;
-}
-
-.login-card {
-  max-width: 100%;
-  min-height: 80vh;
-  margin: 0 auto;
-  padding: 24px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
 
 mat-card-title {
   font-size: 24px;
@@ -41,11 +30,60 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #1976d2;
-}
-
 button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+.login-form {
+  background-size: cover;
+  background-image: url("../../../../assets/abstract-formed-by-color-dissolving-water\ \(2\).jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top;
+  background-blend-mode: multiply;
+  background-color: #9cd1ff;
+  height: 100%;
+}
+.login-page {
+  height: 100%;
+  background-size: cover;
+  background-image: url("../../../../assets/newbackround.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left;
+}
+
+.login-card {
+  max-width: 100%;
+
+  padding: 5%;
+  background: rgba(255, 255, 255, 0.5);
+
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.welcome-text {
+  display: grid;
+  font-size: 120px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+  width: 100%;
+  place-items: center;
+}
+
+.welcome-text p {
+  grid-area: 1/1/-1/-1;
+}
+.welcome-text p:nth-of-type(1) {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+}
+
+.welcome-text p:nth-of-type(2) {
+  clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
+  color: transparent;
+  background: -webkit-linear-gradient(177deg, #fff 53%, white 65%);
+  background: linear-gradient(177deg, #fff 53%, white 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  transform: translateX(-0.02em);
 }

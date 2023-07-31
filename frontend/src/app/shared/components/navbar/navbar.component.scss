@@ -5,3 +5,19 @@
 .mat-mdc-card-header {
   padding: 0px 10px 0px 10px !important;
 }
+.mat-toolbar {
+  background-color: #f44a0f;
+  color: #fff;
+  min-height: 80px;
+  font-size: large;
+  padding: 20px;
+}
+mat-toolbar {
+  margin: 0;
+  width: 100%;
+  /* Use box-sizing to include padding and border in the width calculation */
+  box-sizing: border-box;
+
+  /* If the navbar content exceeds the container's width, it will show a horizontal scrollbar */
+  overflow-x: auto;
+}

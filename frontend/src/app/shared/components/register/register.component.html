@@ -1,412 +1,426 @@
 <ng-container>
-  <mat-grid-list cols="1" rowHeight="100vh" style="margin: 0 15% 0 15%">
-    <mat-card>
-      <mat-tab-group animationDuration="1000ms" class="tab-group-class">
-        <mat-tab label="User">
-          <mat-card class="login-card">
-            <mat-card-header>
-              <mat-card-title>Create your Account</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <form [formGroup]="userRegisterForm">
-                <table class="example-full-width" cellspacing="0">
-                  <tr>
-                    <td>
-                      <mat-form-field
-                        class="example-full-width"
-                        appearance="outline"
-                      >
-                        <mat-label>First name</mat-label>
-                        <input
-                          matInput
-                          formControlName="firstName"
-                          placeholder="First Name"
-                        />
-                        <mat-error
-                          *ngIf="
-                            sellerRegisterForm.controls['firstName'].invalid &&
-                            sellerRegisterForm.controls['firstName'].touched
-                          "
+  <div class="row register-page">
+    <div class="col-6 d-flex justify-content-center align-items-center">
+      <div class="welcome-text">
+        <p>REGISTER</p>
+        <p>REGISTER</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div
+        class="register-form d-flex justify-content-center align-items-start"
+      >
+        <mat-card class="register-card m-4">
+          <mat-tab-group animationDuration="1000ms" class="tab-group-class">
+            <mat-tab label="User">
+              <mat-card-header>
+                <mat-card-title>Create your Account</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <form [formGroup]="userRegisterForm">
+                  <table class="example-full-width" cellspacing="0">
+                    <tr>
+                      <td>
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
                         >
-                          First Name is required.
-                        </mat-error>
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        class="example-full-width"
-                        appearance="outline"
-                      >
-                        <mat-label>Last Name</mat-label>
-                        <input
-                          matInput
-                          formControlName="lastName"
-                          placeholder="Enter your email"
-                        />
-                        <mat-error
-                          *ngIf="
-                            sellerRegisterForm.controls['lastName'].invalid &&
-                            sellerRegisterForm.controls['lastName'].touched
-                          "
+                          <mat-label>First name</mat-label>
+                          <input
+                            matInput
+                            formControlName="firstName"
+                            placeholder="First Name"
+                          />
+                          <mat-error
+                            *ngIf="
+                              sellerRegisterForm.controls['firstName']
+                                .invalid &&
+                              sellerRegisterForm.controls['firstName'].touched
+                            "
+                          >
+                            First Name is required.
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
                         >
-                          Last Name is required.
-                        </mat-error>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-                </table>
-                <mat-form-field appearance="outline">
-                  <mat-label>Email</mat-label>
-                  <input
-                    matInput
-                    formControlName="email"
-                    placeholder="Enter your email"
-                  />
-                  <mat-error
-                    *ngIf="
-                      userRegisterForm.controls['email'].invalid &&
-                      userRegisterForm.controls['email'].touched
-                    "
-                  >
-                    Please enter a valid email.
-                  </mat-error>
-                </mat-form-field>
+                          <mat-label>Last Name</mat-label>
+                          <input
+                            matInput
+                            formControlName="lastName"
+                            placeholder="Enter your email"
+                          />
+                          <mat-error
+                            *ngIf="
+                              sellerRegisterForm.controls['lastName'].invalid &&
+                              sellerRegisterForm.controls['lastName'].touched
+                            "
+                          >
+                            Last Name is required.
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      formControlName="email"
+                      placeholder="Enter your email"
+                    />
+                    <mat-error
+                      *ngIf="
+                        userRegisterForm.controls['email'].invalid &&
+                        userRegisterForm.controls['email'].touched
+                      "
+                    >
+                      Please enter a valid email.
+                    </mat-error>
+                  </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Password</mat-label>
-                  <input
-                    matInput
-                    formControlName="password"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
-                  <mat-error
-                    *ngIf="
-                      userRegisterForm.controls['password'].invalid &&
-                      userRegisterForm.controls['password'].touched
-                    "
-                  >
-                    Please enter a password.
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Confirm Password</mat-label>
-                  <input
-                    matInput
-                    formControlName="confirmPassword"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
-                  <mat-error
-                    *ngIf="
+                  <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      formControlName="password"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                    <mat-error
+                      *ngIf="
+                        userRegisterForm.controls['password'].invalid &&
+                        userRegisterForm.controls['password'].touched
+                      "
+                    >
+                      Please enter a password.
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input
+                      matInput
+                      formControlName="confirmPassword"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                    <mat-error
+                      *ngIf="
                       userRegisterForm.get('confirmPassword')?.touched &&
                       userRegisterForm.controls['confirmPassword'].errors
                         ?.['passwordMismatch']
                     "
+                    >
+                      The password doesn't match!
+                    </mat-error>
+                  </mat-form-field>
+
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="userRegisterForm.invalid"
+                    (click)="userRegister()"
                   >
-                    The password doesn't match!
-                  </mat-error>
-                </mat-form-field>
-
-                <button
-                  mat-raised-button
-                  color="primary"
-                  [disabled]="userRegisterForm.invalid"
-                  (click)="userRegister()"
-                >
-                  Register
-                </button>
-              </form>
-            </mat-card-content>
-          </mat-card>
-        </mat-tab>
-        <mat-tab label="Seller"
-          ><mat-card class="login-card">
-            <mat-card-header>
-              <mat-card-title>Create your Account</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <form [formGroup]="sellerRegisterForm">
-                <table class="example-full-width" cellspacing="0">
-                  <tr>
-                    <td>
-                      <mat-form-field
-                        class="example-full-width"
-                        appearance="outline"
-                      >
-                        <mat-label>First name</mat-label>
-                        <input
-                          matInput
-                          formControlName="firstName"
-                          placeholder="First Name"
-                        />
-                        <mat-error
-                          *ngIf="
-                            sellerRegisterForm.controls['firstName'].invalid &&
-                            sellerRegisterForm.controls['firstName'].touched
-                          "
+                    Register
+                  </button>
+                </form>
+              </mat-card-content>
+            </mat-tab>
+            <mat-tab label="Seller">
+              <mat-card-header>
+                <mat-card-title>Create your Account</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <form [formGroup]="sellerRegisterForm">
+                  <table class="example-full-width" cellspacing="0">
+                    <tr>
+                      <td>
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
                         >
-                          First Name is required.
-                        </mat-error>
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        class="example-full-width"
-                        appearance="outline"
-                      >
-                        <mat-label>Last Name</mat-label>
-                        <input
-                          matInput
-                          formControlName="lastName"
-                          placeholder="Enter your email"
-                        />
-                        <mat-error
-                          *ngIf="
-                            sellerRegisterForm.controls['lastName'].invalid &&
-                            sellerRegisterForm.controls['lastName'].touched
-                          "
-                        >
-                          Last Name is required.
-                        </mat-error>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-                </table>
-
-                <mat-form-field appearance="outline">
-                  <mat-label>Shop Name</mat-label>
-                  <input
-                    matInput
-                    formControlName="shopName"
-                    placeholder="Enter your Shop Name"
-                  />
-                  <mat-error
-                    *ngIf="
-                      sellerRegisterForm.controls['shopName'].invalid &&
-                      sellerRegisterForm.controls['shopName'].touched
-                    "
-                  >
-                    Please enter a valid Shop Name.
-                  </mat-error>
-                </mat-form-field>
-
-                <table class="example-full-width" cellspacing="0">
-                  <tr>
-                    <td>
-                      <mat-form-field
-                        class="example-full-width"
-                        appearance="outline"
-                      >
-                        <mat-label>Category</mat-label>
-                        <mat-select
-                          [(ngModel)]="selectedCategory"
-                          formControlName="category"
-                          placeholder="Category"
-                        >
-                          <mat-option
-                            *ngFor="let category of categories"
-                            [value]="category.value"
+                          <mat-label>First name</mat-label>
+                          <input
+                            matInput
+                            formControlName="firstName"
+                            placeholder="First Name"
+                          />
+                          <mat-error
+                            *ngIf="
+                              sellerRegisterForm.controls['firstName']
+                                .invalid &&
+                              sellerRegisterForm.controls['firstName'].touched
+                            "
                           >
-                            {{ category.label }}
-                          </mat-option>
-                        </mat-select>
-                        <mat-error
-                          *ngIf="
-                            sellerRegisterForm.controls['category'].invalid &&
-                            sellerRegisterForm.controls['category'].touched
-                          "
+                            First Name is required.
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
                         >
-                          Category is required.
-                        </mat-error>
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        class="example-full-width"
-                        appearance="outline"
-                      >
-                        <mat-label>Location</mat-label>
-                        <mat-select
-                          [(ngModel)]="selectedLocation"
-                          formControlName="location"
-                          placeholder="Location"
-                        >
-                          <mat-option
-                            *ngFor="let location of locations"
-                            [value]="location.value"
+                          <mat-label>Last Name</mat-label>
+                          <input
+                            matInput
+                            formControlName="lastName"
+                            placeholder="Enter your email"
+                          />
+                          <mat-error
+                            *ngIf="
+                              sellerRegisterForm.controls['lastName'].invalid &&
+                              sellerRegisterForm.controls['lastName'].touched
+                            "
                           >
-                            {{ location.label }}
-                          </mat-option>
-                        </mat-select>
-                        <mat-error
-                          *ngIf="
-                            sellerRegisterForm.controls['location'].invalid &&
-                            sellerRegisterForm.controls['location'].touched
-                          "
-                        >
-                          Location is required.
-                        </mat-error>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-                </table>
-                <mat-form-field appearance="outline">
-                  <mat-label>Email</mat-label>
-                  <input
-                    matInput
-                    formControlName="email"
-                    placeholder="Enter your email"
-                  />
-                  <mat-error
-                    *ngIf="
-                      sellerRegisterForm.controls['email'].invalid &&
-                      sellerRegisterForm.controls['email'].touched
-                    "
-                  >
-                    Please enter a valid email.
-                  </mat-error>
-                </mat-form-field>
+                            Last Name is required.
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Password</mat-label>
-                  <input
-                    matInput
-                    formControlName="password"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
-                  <mat-error
-                    *ngIf="
-                      sellerRegisterForm.controls['password'].invalid &&
-                      sellerRegisterForm.controls['password'].touched
-                    "
-                  >
-                    Please enter a password.
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Confirm Password</mat-label>
-                  <input
-                    matInput
-                    formControlName="confirmPassword"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
-                  <mat-error
-                    *ngIf="
+                  <mat-form-field appearance="outline">
+                    <mat-label>Shop Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="shopName"
+                      placeholder="Enter your Shop Name"
+                    />
+                    <mat-error
+                      *ngIf="
+                        sellerRegisterForm.controls['shopName'].invalid &&
+                        sellerRegisterForm.controls['shopName'].touched
+                      "
+                    >
+                      Please enter a valid Shop Name.
+                    </mat-error>
+                  </mat-form-field>
+
+                  <table class="example-full-width" cellspacing="0">
+                    <tr>
+                      <td>
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Category</mat-label>
+                          <mat-select
+                            [(ngModel)]="selectedCategory"
+                            formControlName="category"
+                            placeholder="Category"
+                          >
+                            <mat-option
+                              *ngFor="let category of categories"
+                              [value]="category.value"
+                            >
+                              {{ category.label }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error
+                            *ngIf="
+                              sellerRegisterForm.controls['category'].invalid &&
+                              sellerRegisterForm.controls['category'].touched
+                            "
+                          >
+                            Category is required.
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Location</mat-label>
+                          <mat-select
+                            [(ngModel)]="selectedLocation"
+                            formControlName="location"
+                            placeholder="Location"
+                          >
+                            <mat-option
+                              *ngFor="let location of locations"
+                              [value]="location.value"
+                            >
+                              {{ location.label }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error
+                            *ngIf="
+                              sellerRegisterForm.controls['location'].invalid &&
+                              sellerRegisterForm.controls['location'].touched
+                            "
+                          >
+                            Location is required.
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      formControlName="email"
+                      placeholder="Enter your email"
+                    />
+                    <mat-error
+                      *ngIf="
+                        sellerRegisterForm.controls['email'].invalid &&
+                        sellerRegisterForm.controls['email'].touched
+                      "
+                    >
+                      Please enter a valid email.
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      formControlName="password"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                    <mat-error
+                      *ngIf="
+                        sellerRegisterForm.controls['password'].invalid &&
+                        sellerRegisterForm.controls['password'].touched
+                      "
+                    >
+                      Please enter a password.
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input
+                      matInput
+                      formControlName="confirmPassword"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                    <mat-error
+                      *ngIf="
                       sellerRegisterForm.get('confirmPassword')?.touched &&
                       sellerRegisterForm.controls['confirmPassword'].errors
                         ?.['passwordMismatch']
                     "
-                  >
-                    The password doesn't match!
-                  </mat-error>
-                </mat-form-field>
+                    >
+                      The password doesn't match!
+                    </mat-error>
+                  </mat-form-field>
 
-                <div class="row">
-                  <div class="col-12 mb-4">
-                    <div style="padding: 15px">
-                      <div>
-                        <div
-                          class="dropzone"
-                          fileDragDrop
-                          (filesChangeEmiter)="onFileChange($event)"
-                        >
-                          <div class="text-wrapper">
-                            <div class="centered">
-                              <input
-                                type="file"
-                                name="file"
-                                id="file"
-                                (change)="onFileChanges($event.target)"
-                                multiple
-                                formControlName="sellerImg"
-                              />
-                              <label for="file"
-                                ><span class="textLink">Select your file</span>
-                                or Drop it here!</label
-                              >
+                  <div class="row">
+                    <div class="col-12 mb-4">
+                      <div style="padding: 20px">
+                        <div>
+                          <div
+                            class="dropzone"
+                            fileDragDrop
+                            (filesChangeEmiter)="onFileChange($event)"
+                          >
+                            <div class="text-wrapper">
+                              <div class="centered">
+                                <input
+                                  type="file"
+                                  name="file"
+                                  id="file"
+                                  (change)="onFileChanges($event.target)"
+                                  multiple
+                                  formControlName="sellerImg"
+                                />
+                                <label for="file"
+                                  ><span class="textLink"
+                                    >Select your file</span
+                                  >
+                                  or Drop it here!</label
+                                >
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <hr />
-                      <div
-                        class="row img-upload-success"
-                        *ngIf="imageUploadSuccess"
-                      >
+                        <hr />
                         <div
-                          class="col-12 d-flex justify-content-center align-items-center"
-                        >
-                          <h6 style="font-style: italic">
-                            Image Uploaded Successfully !!!
-                          </h6>
-                        </div>
-                      </div>
-                      <h5
-                        mat-subheader
-                        *ngIf="files.length && !imageUploadSuccess"
-                      >
-                        Preview
-                      </h5>
-
-                      <div
-                        class="row"
-                        *ngIf="files.length && !imageUploadSuccess"
-                      >
-                        <div
-                          class="col-lg-6 col-sm-12 d-flex justify-content-center"
+                          class="row img-upload-success"
+                          *ngIf="imageUploadSuccess"
                         >
                           <div
-                            class="row fileItem"
-                            *ngFor="let f of files; let ind = index"
+                            class="col-12 d-flex justify-content-center align-items-center"
                           >
-                            <div
-                              class="col-sm-12 fileItemIconDiv"
-                              (click)="openConfirmDialog(ind)"
-                            >
-                              <i class="fa-6x fileItemIcon"></i>
-                              <!-- <mat-icon>clear</mat-icon> -->
-                            </div>
-                            <div class="col-sm-12 fileItemText">
-                              <span>{{ f.name }}</span>
-                            </div>
+                            <h6 style="font-style: italic">
+                              Image Uploaded Successfully !!!
+                            </h6>
                           </div>
                         </div>
-                        <div
-                          class="col-lg-6 col-sm-12 d-flex align-items-center"
+                        <h5
+                          mat-subheader
+                          *ngIf="files.length && !imageUploadSuccess"
                         >
-                          <button
-                            class="uploadButton"
-                            (click)="uploadImage()"
-                            [ngClass]="
-                              uploadingImg ? 'uploading' : 'uploadButton'
-                            "
+                          Preview
+                        </h5>
+
+                        <div
+                          class="row"
+                          *ngIf="files.length && !imageUploadSuccess"
+                        >
+                          <div
+                            class="col-lg-6 col-sm-12 d-flex justify-content-center"
                           >
-                            {{ uploadingImg ? "Uploading..." : "Upload" }}
-                          </button>
-                          <span class="bg-success" *ngIf="imageUploadSuccess">
-                            Uploaded Image SuccessFully
-                          </span>
+                            <div
+                              class="row fileItem"
+                              *ngFor="let f of files; let ind = index"
+                            >
+                              <div
+                                class="col-sm-12 fileItemIconDiv"
+                                (click)="openConfirmDialog(ind)"
+                              >
+                                <i class="fa-6x fileItemIcon"></i>
+                                <!-- <mat-icon>clear</mat-icon> -->
+                              </div>
+                              <div class="col-sm-12 fileItemText">
+                                <span>{{ f.name }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="col-lg-6 col-sm-12 d-flex align-items-center"
+                          >
+                            <button
+                              class="uploadButton"
+                              (click)="uploadImage()"
+                              [ngClass]="
+                                uploadingImg ? 'uploading' : 'uploadButton'
+                              "
+                            >
+                              {{ uploadingImg ? "Uploading..." : "Upload" }}
+                            </button>
+                            <span class="bg-success" *ngIf="imageUploadSuccess">
+                              Uploaded Image SuccessFully
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <button
-                  mat-raised-buttons
-                  color="primary"
-                  [disabled]="sellerRegisterForm.invalid || !imageUploadSuccess"
-                  (click)="sellerRegister()"
-                >
-                  Register
-                </button>
-              </form>
-            </mat-card-content>
-          </mat-card></mat-tab
-        >
-      </mat-tab-group>
-    </mat-card>
-  </mat-grid-list>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="
+                      sellerRegisterForm.invalid || !imageUploadSuccess
+                    "
+                    (click)="sellerRegister()"
+                  >
+                    Register
+                  </button>
+                </form>
+              </mat-card-content>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </ng-container>
