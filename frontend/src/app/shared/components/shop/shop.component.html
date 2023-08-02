@@ -7,7 +7,9 @@
   (mouseleave)="onCardHover(false)"
   [hidden]="!isLoaded"
 >
-  <div class="ribbon"><span>POPULAR</span></div>
+  <div class="ribbon ribbon-blue"><span>POPULAR</span></div>
+  <!-- <div class="ribbon ribbon-green"><span>ASSURED</span></div> -->
+  <!-- <div class="ribbon ribbon-orange"><span>BEST CHOICE</span></div> -->
   <img class="card-img" [src]="imageUrl" (load)="imageLoader($event)" />
   <div
     class="card-img-overlay text-white d-flex flex-column justify-content-end align-items-end"
