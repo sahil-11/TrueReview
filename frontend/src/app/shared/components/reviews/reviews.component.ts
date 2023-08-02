@@ -22,7 +22,6 @@ import {
   NgbSlideEvent,
   NgbSlideEventSource,
 } from '@ng-bootstrap/ng-bootstrap';
-import ColorThief from 'color-thief-ts';
 import { DOCUMENT } from '@angular/common';
 
 interface ShopImg {
@@ -389,15 +388,15 @@ export class ReviewsComponent implements OnInit, AfterViewInit {
   }
 
   //getting rendered Images Color Pallete
-  async getColorPalate(url: string) {
-    const colorThief = new ColorThief();
-    const dominantColor = await colorThief.getColorAsync(url);
-    const palette = await colorThief.getPaletteAsync(url, 5);
+  // async getColorPalate(url: string) {
+  //   const colorThief = new ColorThief();
+  //   const dominantColor = await colorThief.getColorAsync(url);
+  //   const palette = await colorThief.getPaletteAsync(url, 5);
 
-    // console.log(dominantColor);
-    // console.log(palette);
-    // this.setbackgroudColor(dominantColor);
-  }
+  //   // console.log(dominantColor);
+  //   // console.log(palette);
+  //   // this.setbackgroudColor(dominantColor);
+  // }
 
   // setbackgroudColor(color: any) {
   //   this.backgroundcolor = color;
